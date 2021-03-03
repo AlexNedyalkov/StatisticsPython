@@ -41,89 +41,75 @@ ax[1].set_title('Uniform data histogram')
 
 plt.show()
 
-## log-normal distribution
+# log-normal distribution
 
 N = 1001
-x = np.linspace(0,10,N)
-lognormdist = stats.lognorm.pdf(x,1)
+x = np.linspace(0, 10, N)
+lognormdist = stats.lognorm.pdf(x, 1)
 
-plt.plot(x,lognormdist)
+plt.plot(x, lognormdist)
 plt.title('Analytic log-normal distribution')
 plt.show()
 
+# empirical log-normal distribution
 
-# In[ ]:
 
-
-## empirical log-normal distribution
-
-shift   = 5  # equal to the mean?
-stretch = .5 # equal to standard deviation?
-n = 2000     # number of data points
-
+stretch_distribution = .5
+n = 2000
 # generate data
-data = stretch*np.random.randn(n) + shift
-data = np.exp( data )
+data = stretch_distribution*np.random.randn(n) + shift_distribution
+data = np.exp(data)
 
 # plot data
-fig,ax = plt.subplots(2,1,figsize=(4,6))
-ax[0].plot(data,'.')
+fig, ax = plt.subplots(2, 1, figsize=(4, 6))
+ax[0].plot(data, '.')
 ax[0].set_title('Log-normal data values')
 
-ax[1].hist(data,25)
+ax[1].hist(data, 25)
 ax[1].set_title('Log-normal data histogram')
 plt.show()
 
 
-# In[ ]:
-
-
-## binomial
+# binomial
 
 # a binomial distribution is the probability of K heads in N coin tosses,
 # given a probability of p heads (e.g., .5 is a fair coin).
 
-n = 10 # number on coin tosses
-p = .5 # probability of heads
-
+# number on coin tosses
+n = 10
+# probability of heads
+p = .9
 x = range(n+2)
-bindist = stats.binom.pmf(x,n,p)
+bindist = stats.binom.pmf(x, n, p)
 
-plt.bar(x,bindist)
-plt.title('Binomial distribution (n=%s, p=%g)'%(n,p))
+plt.bar(x, bindist)
+plt.title(f'Binomial distribution (n={n}, p={p})')
 plt.show()
 
 
-# In[ ]:
+#t
 
-
-## t
-
-x  = np.linspace(-4,4,1001)
+x = np.linspace(-4, 4, 1001)
 df = 200
-t  = stats.t.pdf(x,df)
+t = stats.t.pdf(x, df)
 
 plt.plot(x,t)
 plt.xlabel('t-value')
 plt.ylabel('P(t | H$_0$)')
-plt.title('t(%g) distribution'%df)
+plt.title(f't({df}) distribution')
 plt.show()
 
 
-# In[ ]:
-
-
-## F
 
 # parameters
 num_df = 5   # numerator degrees of freedom
 den_df = 100 # denominator df
 
 # values to evaluate
-x = np.linspace(0,10,10001)
+x = np.linspace(0, 10, 10001)
 
 # the distribution
-fdist = stats.f.pdf(x,num_df,den_df)
+fdist = stats.f.pdf(x, num_df, den_df)
 
 plt.plot(x,fdist)
 plt.title(f'F({num_df},{den_df}) distribution')
