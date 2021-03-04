@@ -90,6 +90,6 @@ ax[1].plot(x, y)
 ax[1].plot([datamean, datamean], [0, max(y)], 'r--')
 ax[1].plot([datamedian, datamedian], [0, max(y)], 'b--')
 ax[1].set_title('Log-normal data histogram')
-plt.showl()
+plt.show()
 
 
