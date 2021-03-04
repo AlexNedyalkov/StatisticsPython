@@ -11,19 +11,19 @@ d2 = 3*np.random.randn(N)
 d3 = np.random.randn(N) + 1
 
 # need their histograms
-y1,x1 = np.histogram(d1, nbins)
+y1, x1 = np.histogram(d1, nbins)
 x1 = (x1[1:]+x1[:-1])/2
 
-y2,x2 = np.histogram(d2, nbins)
+y2, x2 = np.histogram(d2, nbins)
 x2 = (x2[1:]+x2[:-1])/2
 
-y3,x3 = np.histogram(d3, nbins)
+y3, x3 = np.histogram(d3, nbins)
 x3 = (x3[1:]+x3[:-1])/2
 
 # plot them
-plt.plot(x1,y1,'b')
-plt.plot(x2,y2,'r')
-plt.plot(x3,y3,'k')
+plt.plot(x1, y1, 'b')
+plt.plot(x2, y2, 'r')
+plt.plot(x3, y3, 'k')
 
 
 plt.xlabel('Data values')
@@ -35,13 +35,14 @@ mean_d2 = np.mean(d2)
 mean_d3 = np.mean(d3)
 
 # plot them
-plt.plot(x1,y1,'b', x2,y2,'r', x3,y3,'k')
-plt.plot([mean_d1,mean_d1],[0,max(y1)],'b--')
-plt.plot([mean_d2,mean_d2],[0,max(y2)],'r--')
-plt.plot([mean_d3,mean_d3],[0,max(y3)],'k--')
+plt.plot(x1, y1, 'b', x2, y2, 'r', x3, y3, 'k')
+plt.plot([mean_d1, mean_d1], [0, max(y1)], 'b--')
+plt.plot([mean_d2, mean_d2], [0, max(y2)], 'r--')
+plt.plot([mean_d3, mean_d3], [0, max(y3)], 'k--')
 
 plt.xlabel('Data values')
 plt.ylabel('Data counts')
+plt.show()
 
 # new dataset of distribution combinations
 d4 = np.hstack( (np.random.randn(N)-2,np.random.randn(N)+2) )
@@ -53,7 +54,7 @@ x4 = (x4[:-1]+x4[1:])/2
 mean_d4 = np.mean(d4)
 
 
-plt.plot(x4,y4,'b')
+plt.plot(x4, y4, 'b')
 plt.plot([mean_d4,mean_d4],[0,max(y4)],'b--')
 
 plt.xlabel('Data values')
@@ -61,17 +62,16 @@ plt.ylabel('Data counts')
 plt.show()
 
 # create a log-normal distribution
-shift   = 0
+shift = 0
 stretch = .7
-n       = 2000
-nbins   = 50
+n = 2000
+nbins = 50
 
 # generate data
 data = stretch*np.random.randn(n) + shift
-data = np.exp( data )
-
+data = np.exp(data)
 # and its histogram
-y,x = np.histogram(data,nbins)
+y, x = np.histogram(data,nbins)
 x = (x[:-1]+x[1:])/2
 
 # compute mean and median
@@ -80,16 +80,16 @@ datamedian = np.median(data)
 
 
 # plot data
-fig,ax = plt.subplots(2,1,figsize=(4,6))
-ax[0].plot(data,'.',color=[.5,.5,.5],label='Data')
-ax[0].plot([1,n],[datamean,datamean],'r--',label='Mean')
-ax[0].plot([1,n],[datamedian,datamedian],'b--',label='Median')
+fig, ax = plt.subplots(2, 1, figsize=(4,6))
+ax[0].plot(data, '.', color=[.5, .5, .5], label='Data')
+ax[0].plot([1, n], [datamean, datamean], 'r--', label='Mean')
+ax[0].plot([1, n], [datamedian, datamedian], 'b--', label='Median')
 ax[0].legend()
 
-ax[1].plot(x,y)
-ax[1].plot([datamean,datamean],[0,max(y)],'r--')
-ax[1].plot([datamedian,datamedian],[0,max(y)],'b--')
+ax[1].plot(x, y)
+ax[1].plot([datamean, datamean], [0, max(y)], 'r--')
+ax[1].plot([datamedian, datamedian], [0, max(y)], 'b--')
 ax[1].set_title('Log-normal data histogram')
-plt.show()
+plt.showl()
 
 
