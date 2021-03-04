@@ -1,23 +1,22 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import scipy.stats as stats
 
 # the distributions
 N = 10001   # number of data points
-nbins = 30  # number of histogram bins
+bins = 30  # number of histogram bins
 
 d1 = np.random.randn(N) - 1
 d2 = 3*np.random.randn(N)
 d3 = np.random.randn(N) + 1
 
 # need their histograms
-y1, x1 = np.histogram(d1, nbins)
+y1, x1 = np.histogram(d1, bins)
 x1 = (x1[1:]+x1[:-1])/2
 
-y2, x2 = np.histogram(d2, nbins)
+y2, x2 = np.histogram(d2, bins)
 x2 = (x2[1:]+x2[:-1])/2
 
-y3, x3 = np.histogram(d3, nbins)
+y3, x3 = np.histogram(d3, bins)
 x3 = (x3[1:]+x3[:-1])/2
 
 # plot them
@@ -45,9 +44,9 @@ plt.ylabel('Data counts')
 plt.show()
 
 # new dataset of distribution combinations
-d4 = np.hstack( (np.random.randn(N)-2,np.random.randn(N)+2) )
+d4 = np.hstack((np.random.randn(N)-2, np.random.randn(N)+2))
 # and its histogram
-[y4,x4] = np.histogram(d4,nbins)
+[y4, x4] = np.histogram(d4, bins)
 x4 = (x4[:-1]+x4[1:])/2
 
 # and its mean
@@ -55,7 +54,7 @@ mean_d4 = np.mean(d4)
 
 
 plt.plot(x4, y4, 'b')
-plt.plot([mean_d4,mean_d4],[0,max(y4)],'b--')
+plt.plot([mean_d4, mean_d4], [0, max(y4)], 'b--')
 
 plt.xlabel('Data values')
 plt.ylabel('Data counts')
@@ -65,31 +64,29 @@ plt.show()
 shift = 0
 stretch = .7
 n = 2000
-nbins = 50
+bins = 50
 
 # generate data
 data = stretch*np.random.randn(n) + shift
 data = np.exp(data)
 # and its histogram
-y, x = np.histogram(data,nbins)
+y, x = np.histogram(data, bins)
 x = (x[:-1]+x[1:])/2
 
 # compute mean and median
-datamean = np.mean(data)
-datamedian = np.median(data)
+data_mean = np.mean(data)
+data_median = np.median(data)
 
 
 # plot data
-fig, ax = plt.subplots(2, 1, figsize=(4,6))
+fig, ax = plt.subplots(2, 1, figsize=(4, 6))
 ax[0].plot(data, '.', color=[.5, .5, .5], label='Data')
-ax[0].plot([1, n], [datamean, datamean], 'r--', label='Mean')
-ax[0].plot([1, n], [datamedian, datamedian], 'b--', label='Median')
+ax[0].plot([1, n], [data_mean, data_mean], 'r--', label='Mean')
+ax[0].plot([1, n], [data_median, data_median], 'b--', label='Median')
 ax[0].legend()
 
 ax[1].plot(x, y)
-ax[1].plot([datamean, datamean], [0, max(y)], 'r--')
-ax[1].plot([datamedian, datamedian], [0, max(y)], 'b--')
+ax[1].plot([data_mean, data_mean], [0, max(y)], 'r--')
+ax[1].plot([data_median, data_median], [0, max(y)], 'b--')
 ax[1].set_title('Log-normal data histogram')
 plt.show()
-
-
