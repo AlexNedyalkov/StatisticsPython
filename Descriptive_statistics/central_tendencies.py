@@ -89,10 +89,6 @@ ax[1].plot(x, y)
 ax[1].plot([data_mean, data_mean], [0, max(y)], 'r--')
 ax[1].plot([data_median, data_median], [0, max(y)], 'b--')
 ax[1].set_title('Log-normal data histogram')
-<<<<<<< 314bdc9a7d7a558ccc70b91b2a3656514cbed7b8
-plt.showl()
-
-
-=======
 plt.show()
->>>>>>> Syntax fixes for central tendencies
+
+
