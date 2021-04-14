@@ -40,5 +40,5 @@ print(oidx)
 ax[1].plot(oidx, ds[oidx], 'x', color='r', markersize=20)
 ax[0].plot(d1[oidx], d2[oidx], 'x', color='r', markersize=20)
 
-fig
+plt.show()
 
